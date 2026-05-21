@@ -1,0 +1,29 @@
+@startuml
+title Pet Adoption System Flowchart
+
+start
+:User opens system;
+:User logs in;
+
+if (Role?) then (Admin)
+    :View dashboard;
+    :Manage users;
+    :Manage pets;
+    :View adoption requests;
+    :Approve or reject requests;
+elseif (Staff)
+    :View dashboard;
+    :Add or update pets;
+    :View adoption requests;
+    :Approve or reject requests;
+else (Adopter)
+    :View pets;
+    :Search pets;
+    :View pet details;
+    :Submit adoption request;
+    :View request status;
+endif
+
+:System updates database;
+stop
+@enduml

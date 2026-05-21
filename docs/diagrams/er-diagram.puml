@@ -1,0 +1,46 @@
+@startuml
+title Pet Adoption System ER Diagram
+
+entity users {
+    * id : bigint
+    --
+    name : varchar
+    email : varchar
+    password : varchar
+    role : enum
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity pets {
+    * id : bigint
+    --
+    name : varchar
+    type : varchar
+    breed : varchar
+    age : integer
+    gender : varchar
+    description : text
+    status : enum
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+entity adoption_requests {
+    * id : bigint
+    --
+    pet_id : bigint
+    user_id : bigint
+    adopter_name : varchar
+    email : varchar
+    contact_number : varchar
+    address : text
+    reason : text
+    status : enum
+    created_at : timestamp
+    updated_at : timestamp
+}
+
+users ||--o{ adoption_requests : submits
+pets ||--o{ adoption_requests : receives
+@enduml

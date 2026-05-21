@@ -1,0 +1,27 @@
+@startuml
+title Pet Adoption System Architecture Diagram
+
+actor User
+
+node "Web Browser" {
+    component "Laravel Blade Views"
+}
+
+node "Laravel Application" {
+    component "Routes"
+    component "Controllers"
+    component "Models"
+}
+
+database "MySQL Database" {
+    component "users"
+    component "pets"
+    component "adoption_requests"
+}
+
+User --> "Laravel Blade Views"
+"Laravel Blade Views" --> Routes
+Routes --> Controllers
+Controllers --> Models
+Models --> "MySQL Database"
+@enduml
