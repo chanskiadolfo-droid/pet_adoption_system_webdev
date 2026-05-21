@@ -8,9 +8,13 @@ mkdir -p /var/www/storage/framework/sessions
 mkdir -p /var/www/storage/framework/views
 mkdir -p /var/www/storage/framework/cache
 
-# Cache config
-php artisan config:clear
+# Clear all cache
 php artisan cache:clear
+php artisan config:clear
+php artisan route:clear
+php artisan view:clear
+
+# Rebuild cache
 php artisan config:cache
 php artisan route:cache
 
