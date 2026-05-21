@@ -1,12 +1,18 @@
 #!/bin/bash
 
+# Fix storage permissions
+chmod -R 777 /var/www/storage
+chmod -R 777 /var/www/bootstrap/cache
+mkdir -p /var/www/storage/logs
+mkdir -p /var/www/storage/framework/sessions
+mkdir -p /var/www/storage/framework/views
+mkdir -p /var/www/storage/framework/cache
+
 # Cache config
+php artisan config:clear
+php artisan cache:clear
 php artisan config:cache
 php artisan route:cache
-php artisan view:cache
-
-# Run migrations
-php artisan migrate --force
 
 # Start PHP-FPM and Nginx
 php-fpm -D
